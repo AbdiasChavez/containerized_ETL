@@ -1,0 +1,7 @@
+Libraries:
+ - requests
+ - pandas
+ - sqlite3
+ - logging
+ - pydantic
+ - tenacity
