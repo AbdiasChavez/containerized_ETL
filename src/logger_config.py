@@ -1,28 +1,28 @@
 #logger centralized to avoid duplication (Singleton design pattern)
 
-import loggin
+import logging
 import sys
 import os
 from pathlib import Path
 
-def get_logger(name: str) -> loggin.Logger:
+def get_logger(name: str) -> logging.Logger:
     """
     Centralized console to pipelline logs
     """
 
-    log_level_str = os.getenv("LOG_LEVEL","INFO".upper()
-    log_level = getattr(logging, log_level_str, logging.INFO) [cite:302]
+    log_level_str = os.getenv("LOG_LEVEL","INFO".upper())
+    log_level = getattr(logging, log_level_str, logging.INFO)
 
     logger = logging.getLogger(name) #Singleton
 
     if logger.handlers:
         return logger
    
-    logger.setLevel(log_level) [cite:308]
+    logger.setLevel(log_level)
     
     formatter = logging.Formatter(
         fmt="%(asctime)s | %(name)-20s | %(levelname)-8s | %(message)s",
-        datefmt="%Y-%m-%d %H:%M:%S" [cite: 317, 318]
+        datefmt="%Y-%m-%d %H:%M:%S"
     )
 
     console_handler = logging.StreamHandler(sys.stdout)
